@@ -1,0 +1,20 @@
+.logogrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 7rem;
+
+}
+
+@media only screen and (max-width:767px) {
+  .logogrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 4rem;
+  }
+
+}
+
+.logogrid__Image {
+  width: 150px;
+}
