@@ -44,7 +44,7 @@ set_visits(false);
               const { colorMode,toggleColorMode } = useColorMode();
 
   return (
-    <div className='get-in-touch-wrapper ' style={ colorMode==='light' ? { color:'black'} : {color:'white'}}>
+    <div className='get-in-touch-wrapper '>
       <div className="siderbar-wrapper">
       <div className="sidebar-items">
         <div className="subject-nav-form">

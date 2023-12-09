@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "interns",
+  "info": {
+    "singularName": "intern",
+    "pluralName": "interns",
+    "displayName": "intern"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "string"
+    },
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "address": {
+      "type": "string"
+    },
+    "DOB": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "qualification": {
+      "type": "string"
+    },
+    "citizenship_number": {
+      "type": "string"
+    },
+    "citizenship_front": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "citizenship_back": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "issued_date": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "APPROVED",
+        "ON HOLD",
+        "REJECTED"
+      ]
+    }
+  }
+}

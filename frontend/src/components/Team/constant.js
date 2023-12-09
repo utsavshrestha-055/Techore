@@ -27,9 +27,9 @@ export const leaders = [
     linkedin: "https://www.linkedin.com/in/opendra-thapa-39a985188/",
   },
   {
-    name: "Ikshu Gyawali",
+    name: "Smriti Koirala",
     title: "Director of Marketing & Design",
-    image: Ikshu,
+    image: "",
     email: "mailto:ikshu.gyawali@techoresolutions.com",
     phone: "+977 9844883058",
     linkedin: "https://www.linkedin.com/in/ikshu-gyawali-451922285/",
@@ -42,7 +42,7 @@ export const leaders = [
     phone: "+49 17642741856",
     linkedin: "",
   },
-  
+
   {
     name: "Sushant Karki",
     title: "Head of People & Recruiting",

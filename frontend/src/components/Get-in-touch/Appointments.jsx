@@ -4,6 +4,18 @@ import { Select } from '@chakra-ui/react';
 const Appointments = () => {
   return (
     <div className="intership-wrapper">
+      <div className="client-details-wrapper">
+        <h1>Your appointment info</h1>
+        <div className="client-details">
+          <span>First Name:{""}</span>
+          <span>Last Name:{""}</span>
+          <span>Address:{""}</span>
+          <span>Date of appointment:{""}</span>
+          <span>Time of appointment:{""}</span>
+          <span>Purpose of appointment:{""}</span>
+          <span>Department:{""}</span>
+        </div>
+      </div>
       <div className="intership-info">
         Fill up the details to apply for Appointment in techore company.
       </div>

@@ -1,8 +1,13 @@
+import React, { Fragment } from 'react'
+
 import { MdOutlinePendingActions } from "react-icons/md";
-import React from 'react'
+import useFetch from "../../utils/usefetch";
 
 const Dashboard = () => {
-
+  let client_email = localStorage.getItem('client_email');
+let { data } = useFetch(
+  `/api/clients?populate=*&filters[email]=${client_email}`
+);
   return (
     <div className="dashboard-wrapper">
       <ul className="status-details">
@@ -10,15 +15,15 @@ const Dashboard = () => {
           <span>
             <MdOutlinePendingActions size={70} />
           </span>
-          <h2>Pending Projects</h2>
-          <h1>12</h1>
+          <h2>Projects</h2>
+          <h1>Approved</h1>
         </li>
         <li>
           <span>
             <MdOutlinePendingActions size={70} />
           </span>
           <h2>Visits</h2>
-          <h1>1</h1>
+          <h1>0</h1>
         </li>
         <li>
           <span>
@@ -27,24 +32,22 @@ const Dashboard = () => {
           <h2>Appointments</h2>
           <h1>1</h1>
         </li>
-        <li>
-          <span>
-            <MdOutlinePendingActions size={70} />
-          </span>
-          <h2>Completed Projects</h2>
-          <h1>12</h1>
-        </li>
+
       </ul>
       <div className="client-details-wrapper">
         <h1>Details</h1>
         <div className="client-details">
-          <span>First Name:{""}</span>
-          <span>Last Name:{""}</span>
-          <span>Address:{""}</span>
-          <span>Projects Pending:{""}</span>
-          <span>Completed Projects:{""}</span>
-          <span>Appointments:{""}</span>
-          <span>Visits:{""}</span>
+          {data?.data?.map((item) => (
+            <Fragment>
+              <span key={item.attributes.email}>
+                First Name: {item.attributes.firstname}
+              </span>
+              <span>Last Name: {item.attributes.lastname}</span>
+              <span>Address: {item.attributes.Address}</span>
+            </Fragment>
+          ))}
+
+          
         </div>
       </div>
     </div>

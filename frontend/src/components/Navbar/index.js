@@ -24,8 +24,9 @@ import {
   SunIcon,
 } from '@chakra-ui/icons';
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
+import { RiAccountCircleFill } from "react-icons/ri";
 import logo from './image/logo_2.png';
 
 const Navbar = () => {
@@ -33,12 +34,28 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navbar_option_color = useColorModeValue('white', '#1a202c');
-
+let client_email = localStorage.getItem('client_email');
+console.log(client_email);
+let admin_email = localStorage.getItem("admin_email");
+const logout=()=>{
+  localStorage.removeItem('client_email');
+  localStorage.removeItem("admin_email");
+}
   const navigate = useNavigate();
+const checklogin=()=>{
+  if(client_email){
+  navigate("/get-in-touch/dashboard");
+  }else{
+alert('login first')
+    navigate("/client/login");
+
+  }
+}
+
   return (
     <>
       <Box
-        bg={useColorModeValue('white', '#1A202C')}
+        bg={useColorModeValue("white", "#1A202C")}
         boxShadow="base"
         zIndex={999}
       >
@@ -46,19 +63,19 @@ const Navbar = () => {
           <Flex
             id="navbar"
             h={16}
-            alignItems={'center'}
-            justifyContent={'space-between'}
+            alignItems={"center"}
+            justifyContent={"space-between"}
           >
-            <HStack spacing={8} alignItems={'center'}>
+            <HStack spacing={8} alignItems={"center"}>
               {/* Logo starts here */}
               <Box>
                 <Link to="/">
                   <Image
-                    alt={'Techore Solutions'}
-                    fit={'cover'}
-                    align={'center'}
-                    boxSize={'150px'}
-                    objectFit={'cover'}
+                    alt={"Techore Solutions"}
+                    fit={"cover"}
+                    align={"center"}
+                    boxSize={"150px"}
+                    objectFit={"cover"}
                     src={logo}
                     mr={40}
                     id="main-logo"
@@ -67,57 +84,57 @@ const Navbar = () => {
               </Box>
               {/* Logo ends here */}
               <HStack
-                as={'nav'}
+                as={"nav"}
                 spacing={9}
-                display={{ base: 'none', md: 'flex' }}
+                display={{ base: "none", md: "flex" }}
               >
                 <ChakraLink
                   as={Link}
-                  fontWeight={'bold'}
+                  fontWeight={"bold"}
                   px={2}
                   spacing={4}
-                  display={{ base: 'none', md: 'flex' }}
+                  display={{ base: "none", md: "flex" }}
                   py={1}
-                  rounded={'md'}
+                  rounded={"md"}
                   _hover={{
-                    textDecoration: 'none',
-                    bg: useColorModeValue('gray.200', '#FF3E54'),
-                    color: useColorModeValue('black', 'white'),
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.200", "#FF3E54"),
+                    color: useColorModeValue("black", "white"),
                   }}
-                  to={'/'}
+                  to={"/"}
                 >
                   Home
                 </ChakraLink>
                 <ChakraLink
                   px={2}
                   as={Link}
-                  fontWeight={'bold'}
+                  fontWeight={"bold"}
                   spacing={4}
-                  display={{ base: 'none', md: 'flex' }}
+                  display={{ base: "none", md: "flex" }}
                   py={1}
-                  rounded={'md'}
+                  rounded={"md"}
                   _hover={{
-                    textDecoration: 'none',
-                    bg: useColorModeValue('gray.200', '#FF3E54'),
-                    color: useColorModeValue('black', 'white'),
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.200", "#FF3E54"),
+                    color: useColorModeValue("black", "white"),
                   }}
-                  to={'/about-us'}
+                  to={"/about-us"}
                 >
                   About Us
                 </ChakraLink>
-                <Menu closeOnSelect placement='auto'>
+                <Menu closeOnSelect placement="auto">
                   <MenuButton
                     as={Button}
                     rightIcon={
                       <ChevronDownIcon
-                        ml={{ base: '0rem', md: '1rem', xl: '0' }}
+                        ml={{ base: "0rem", md: "1rem", xl: "0" }}
                       />
                     }
-                    bg={useColorModeValue('white', '#1a202c')}
+                    bg={useColorModeValue("white", "#1a202c")}
                     _hover={{
-                      textDecoration: 'none',
-                      bg: useColorModeValue('gray.200', '#FF3E54'),
-                      color: useColorModeValue('black', 'white'),
+                      textDecoration: "none",
+                      bg: useColorModeValue("gray.200", "#FF3E54"),
+                      color: useColorModeValue("black", "white"),
                     }}
                   >
                     Services
@@ -126,66 +143,65 @@ const Navbar = () => {
                   <MenuList>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/website-development');
-
+                        navigate("/services/website-development");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       Web Development
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/mobile-development');
+                        navigate("/services/mobile-development");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       Mobile Development
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/software-development');
+                        navigate("/services/software-development");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       Software Development
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/it-outsourcing');
+                        navigate("/services/it-outsourcing");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       IT Outsourcing
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/digital-marketing-and-seo');
+                        navigate("/services/digital-marketing-and-seo");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       Digital Marketing
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/data-analytics-and-visualization');
+                        navigate("/services/data-analytics-and-visualization");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       Data Analytics
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/hosting');
+                        navigate("/services/hosting");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       Hosting and Mantainence
                     </MenuItem>
                     <MenuItem
                       onClick={() => {
-                        navigate('/services/training');
+                        navigate("/services/training");
                       }}
-                      style={{ paddingLeft: '30px' }}
+                      style={{ paddingLeft: "30px" }}
                     >
                       Training
                     </MenuItem>
@@ -193,101 +209,143 @@ const Navbar = () => {
                 </Menu>
                 <ChakraLink
                   as={Link}
-                  fontWeight={'bold'}
+                  fontWeight={"bold"}
                   px={2}
                   spacing={4}
-                  display={{ base: 'none', md: 'flex' }}
+                  display={{ base: "none", md: "flex" }}
                   py={1}
-                  rounded={'md'}
+                  rounded={"md"}
                   _hover={{
-                    textDecoration: 'none',
-                    bg: useColorModeValue('gray.200', '#FF3E54'),
-                    color: useColorModeValue('black', 'white'),
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.200", "#FF3E54"),
+                    color: useColorModeValue("black", "white"),
                   }}
-                  to={'/team'}
+                  to={"/team"}
                 >
                   Our Team
                 </ChakraLink>
                 <ChakraLink
                   as={Link}
-                  fontWeight={'bold'}
+                  fontWeight={"bold"}
                   px={2}
                   spacing={4}
-                  display={{ base: 'none', md: 'flex' }}
+                  display={{ base: "none", md: "flex" }}
                   py={1}
-                  rounded={'md'}
+                  rounded={"md"}
                   _hover={{
-                    textDecoration: 'none',
-                    bg: useColorModeValue('gray.200', '#FF3E54'),
-                    color: useColorModeValue('black', 'white'),
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.200", "#FF3E54"),
+                    color: useColorModeValue("black", "white"),
                   }}
-                  to={'/blogs'}
+                  to={"/blogs"}
                 >
                   Blogs
                 </ChakraLink>
                 <ChakraLink
                   as={Link}
-                  fontWeight={'bold'}
+                  fontWeight={"bold"}
                   px={2}
                   spacing={4}
-                  display={{ base: 'none', md: 'flex' }}
+                  display={{ base: "none", md: "flex" }}
                   py={1}
-                  rounded={'md'}
+                  rounded={"md"}
                   _hover={{
-                    textDecoration: 'none',
-                    bg: useColorModeValue('gray.200', '#FF3E54'),
-                    color: useColorModeValue('black', 'white'),
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.200", "#FF3E54"),
+                    color: useColorModeValue("black", "white"),
                   }}
-                  to={'/careers'}
+                  to={"/careers"}
                 >
                   Careers
                 </ChakraLink>
                 <ChakraLink
                   as={Link}
-                  fontWeight={'bold'}
+                  fontWeight={"bold"}
                   px={2}
                   spacing={4}
-                  display={{ base: 'none', md: 'flex' }}
+                  display={{ base: "none", md: "flex" }}
                   py={1}
-                  rounded={'md'}
+                  rounded={"md"}
                   _hover={{
-                    textDecoration: 'none',
-                    bg: useColorModeValue('gray.200', '#FF3E54'),
-                    color: useColorModeValue('black', 'white'),
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.200", "#FF3E54"),
+                    color: useColorModeValue("black", "white"),
                   }}
-                  to={'/careers'}
+                  to={"/careers"}
                 >
                   Contact Us
                 </ChakraLink>
                 <Button
-                  as={Link}
-                  rounded={'full'}
-                  size={'lg'}
-                  fontWeight={'bold'}
+
+                  rounded={"full"}
+                  size={"lg"}
+                  fontWeight={"bold"}
                   color="white"
                   px={6}
                   backgroundColor="#FF3E54"
-                  _hover={{ transform: 'scale(1.1)', color: 'white' }}
-                  to={'/get-in-touch/dashboard'}
+                  _hover={{ transform: "scale(1.1)", color: "white" }}
+                  onClick={checklogin}
                 >
                   Get in Touch
                 </Button>
+                <ChakraLink
+                  as={Link}
+                  fontWeight={"bold"}
+                  px={2}
+                  spacing={4}
+                  display={{ base: "none", md: "flex" }}
+                  py={1}
+                  rounded={"md"}
+                  _hover={{
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.200", "#FF3E54"),
+                    color: useColorModeValue("black", "white"),
+                  }}
+                  to={"/"}
+                >
+                  {client_email && (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <RiAccountCircleFill size={30} />
+                      {client_email}
+                      <div onClick={logout}>log out</div>
+                    </div>
+                  )}
+                  {admin_email && (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <RiAccountCircleFill size={30} />
+                      {admin_email}
+                      <div onClick={logout}>log out</div>
+                    </div>
+                  )}
+                </ChakraLink>
               </HStack>
             </HStack>
             <Flex
               ml={{ lg: 10, base: 5 }}
               mr={{ base: 5 }}
-              alignItems={'center'}
+              alignItems={"center"}
             >
               <HStack>
                 <Button onClick={toggleColorMode}>
-                  {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                  {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
                 </Button>
                 <IconButton
-                  size={'lg'}
+                  size={"lg"}
                   icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                  aria-label={'Open Menu'}
-                  display={{ md: 'none' }}
+                  aria-label={"Open Menu"}
+                  display={{ md: "none" }}
                   onClick={isOpen ? onClose : onOpen}
                 />
               </HStack>
@@ -296,16 +354,16 @@ const Navbar = () => {
         </Center>
 
         {isOpen ? (
-          <Box pb={4} display={{ md: 'none' }} mr={'60%'} ml={7} mt={5}>
-            <Stack as={'nav'} spacing={3}>
+          <Box pb={4} display={{ md: "none" }} mr={"60%"} ml={7} mt={5}>
+            <Stack as={"nav"} spacing={3}>
               <ChakraLink
                 as={Link}
                 py={1}
-                rounded={'md'}
+                rounded={"md"}
                 _hover={{
-                  textDecoration: 'none',
+                  textDecoration: "none",
                 }}
-                to={'/'}
+                to={"/"}
                 onClick={isOpen ? onClose : onOpen}
               >
                 Home
@@ -313,11 +371,11 @@ const Navbar = () => {
               <ChakraLink
                 as={Link}
                 py={1}
-                rounded={'md'}
+                rounded={"md"}
                 _hover={{
-                  textDecoration: 'none',
+                  textDecoration: "none",
                 }}
-                to={'/about-us'}
+                to={"/about-us"}
                 onClick={isOpen ? onClose : onOpen}
               >
                 About Us
@@ -330,49 +388,49 @@ const Navbar = () => {
                   fontWeight="normal"
                   variant="text"
                   justifyContent="flex-start"
-                  left={'-6'}
+                  left={"-6"}
                 >
                   Services
                 </MenuButton>
                 <MenuList>
                   <MenuItem
                     onClick={() => {
-                      navigate('/services/website-development');
+                      navigate("/services/website-development");
                     }}
                   >
                     Web Development
                   </MenuItem>
                   <MenuItem
                     onClick={() => {
-                      navigate('/services/mobile-development');
+                      navigate("/services/mobile-development");
                     }}
                   >
                     Mobile Development
                   </MenuItem>
                   <MenuItem
                     onClick={() => {
-                      navigate('/services/software-development');
+                      navigate("/services/software-development");
                     }}
                   >
                     Software Development
                   </MenuItem>
                   <MenuItem
                     onClick={() => {
-                      navigate('/services/it-outsourcing');
+                      navigate("/services/it-outsourcing");
                     }}
                   >
                     IT Outsourcing
                   </MenuItem>
                   <MenuItem
                     onClick={() => {
-                      navigate('/services/digital-marketing-and-seo');
+                      navigate("/services/digital-marketing-and-seo");
                     }}
                   >
                     Digital Marketing
                   </MenuItem>
                   <MenuItem
                     onClick={() => {
-                      navigate('/services/data-analytics-and-visualization');
+                      navigate("/services/data-analytics-and-visualization");
                     }}
                   >
                     Data Analytics
@@ -383,9 +441,9 @@ const Navbar = () => {
                 as={Link}
                 py={1}
                 _hover={{
-                  textDecoration: 'none',
+                  textDecoration: "none",
                 }}
-                to={'/team'}
+                to={"/team"}
                 onClick={isOpen ? onClose : onOpen}
               >
                 Team
@@ -394,9 +452,9 @@ const Navbar = () => {
                 as={Link}
                 py={1}
                 _hover={{
-                  textDecoration: 'none',
+                  textDecoration: "none",
                 }}
-                to={'/blogs'}
+                to={"/blogs"}
                 onClick={isOpen ? onClose : onOpen}
               >
                 Blogs
@@ -404,25 +462,25 @@ const Navbar = () => {
               <ChakraLink
                 as={Link}
                 py={1}
-                rounded={'md'}
+                rounded={"md"}
                 _hover={{
-                  textDecoration: 'none',
+                  textDecoration: "none",
                 }}
-                to={'/careers'}
+                to={"/careers"}
                 onClick={isOpen ? onClose : onOpen}
               >
                 Careers
               </ChakraLink>
               <Button
                 as={Link}
-                rounded={'full'}
-                size={'lg'}
-                fontWeight={'bold'}
+                rounded={"full"}
+                size={"lg"}
+                fontWeight={"bold"}
                 color="white"
                 px={6}
                 backgroundColor="#FF3E54"
-                _hover={{ transform: 'scale(1.1)' }}
-                to={'/contact-us'}
+                _hover={{ transform: "scale(1.1)" }}
+                to={"/contact-us"}
                 onClick={isOpen ? onClose : onOpen}
               >
                 Contact Us

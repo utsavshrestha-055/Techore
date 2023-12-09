@@ -7,6 +7,18 @@ import { SlCalender } from "react-icons/sl";
 const internship = () => {
   return (
     <div className="intership-wrapper">
+      <div className="client-details-wrapper">
+        <h1>Your intership request info</h1>
+        <div className="client-details">
+          <span>First Name:{""}</span>
+          <span>Last Name:{""}</span>
+          <span>Address:{""}</span>
+          <span>Date of visit:{""}</span>
+          <span>Time of Visit:{""}</span>
+          <span>Purpose of visit:{""}</span>
+          <span>Department:{""}</span>
+        </div>
+      </div>
       <div className="intership-info">
         Fill up the details to apply for intership in techore company.
       </div>
@@ -115,7 +127,7 @@ const internship = () => {
           </div>
         </div>
         <div className="form-submit-button">
-          <input type="submit" placeholder="Submit"/>
+          <input type="submit" placeholder="Submit" />
         </div>
       </form>
     </div>
